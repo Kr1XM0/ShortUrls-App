@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acortador de URLs</title>
+    <link href="./styles/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- iziToast -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+</head>
+<body>
+  <main>
+    <div class="hero-container">
+      <h1>Tiny Links, Big impact!</h1>
+      <p>Welcome to your Linkhub, Shorten, Share. Repeat ;) </p>
+      <p>Short and temporary links: up to 10 links per user, valid for 14 days. Perfect for promotions, events or content that doesn't need to be permanent. Try now!</p>
+    </div>
+    <div class="form-container">
+      <h1>
+        Cutty a Link
+        <svg class="icons" >
+          <use xlink:href="#icon-homeLinks"></use>
+        </svg>
+      </h1>
+        <form id="form-cutty">
+          <div class="form-div">
+            <label for="url-input">
+              <svg class="icons" >
+                <use xlink:href="#icon-location"></use>
+              </svg>
+              Long Url
+            </label>
+            <input type="url" id="url-input" 
+              placeholder="Past a long URL here" required
+            >
+          </div>
+          <div class="form-div">
+            <label for="url-alias">
+              <svg class="icons" >
+                <use xlink:href="#icon-pencil"></use>
+              </svg>
+              Alias (optional)
+            </label>
+            
+            <input type="text" id="url-alias" 
+              placeholder="Alias"
+            >
+            <small> Must be at least 3 characters </small>
+          </div>
+          <button id="btn-submit" type="submit">
+              Shorten Link
+          </button>
+        </form>
+      </div>
+  </main>
+        <div id="show-results">
+          <h2>Recent Urls: </h2>
+          <ol id="url-container">
+            <div id="loader" class="loader" style="display: none;">
+              <svg class="spinner icons" >
+                <use xlink:href="#icon-loader"></use>
+              </svg>
+              <p>Cargando...</p>
+            </div>
+          </ol>
+        </div>
+      
+    </body>
+    <script>
+      fetch('./assets/icons.svg')
+        .then(response => response.text())
+        .then(svg => {
+          document.body.insertAdjacentHTML('beforeend', svg);
+      });
+    </script>
+    <script type="module" src="app.js"></script>
+</html>
