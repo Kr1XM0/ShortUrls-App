@@ -15,7 +15,7 @@ class urlController {
   static async creatShortUrls(req, res) {
     const validation = validateUrls(req.body);
 
-    const cant = await Url.NumberOfLinks(req.userToken);
+    const cant = await Url.numberOfLinks(req.userToken);
 
     if (cant >= 10) {
       return res

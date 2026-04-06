@@ -195,7 +195,7 @@ main {
 
 #url-container li a {
   color: #0066FF;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
@@ -228,8 +228,11 @@ i.iLink .icons {
   flex-direction: column;
 }
 
-.copy-button {
-  background-color: #003fc6 !important;
+.urls-div p {
+  max-width: 920px;
+  overflow-x: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
 }
 
 .buttons-container button {
@@ -241,6 +244,15 @@ i.iLink .icons {
   border-radius: 4px;
   color: white;
   font-weight: 700;
+  transition: ease-in-out .1s;
+}
+
+.copy-button:hover {
+  background-color: #003fc6;
+}
+
+.visit-button:hover {
+  background-color: #003fc6;
 }
 
 .buttons-container {
@@ -266,4 +278,84 @@ i.iLink .icons {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Mediaquery */
+@media (max-width: 1360px) {
+  main {
+    justify-content: space-evenly;
+  }
+
+  #show-results h2 {
+    padding-left: 40px;
+  }
+
+  #url-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  #url-container {
+    max-width: 950px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 900px) {
+
+  main {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  .hero-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-container p {
+    display: none;
+  }
+
+  #url-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .urls-div p {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .urls-container-flex i {
+    display: none;
+  }
+
+  .urls-div p {
+    font-size: 0.8rem;
+  }
+
+  #url-container li  {
+    flex-direction: column;
+  }
+
+  .buttons-container {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .copy-button {
+    width: 50%;
+    justify-content: center;
+
+  }
+
+  .visit-button {
+    width: 50%;
+    justify-content: center;
+  }
 }
