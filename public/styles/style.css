@@ -267,11 +267,13 @@ i.iLink .icons {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  margin-top: 100px;
+  color: aliceblue;
 }
 
 .spinner {
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   animation: spin 1s linear infinite;
 }
 

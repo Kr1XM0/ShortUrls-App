@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-export const PORT = process.env.PORT || 1234;
-export const APP_DOMAIN = process.env.APP_DOMAIN || "http://localhost:1234";
+export const PORT = process.env.PORT || 3000;
+export const APP_DOMAIN = process.env.APP_DOMAIN || "https://kut.fly.dev";
 export const nodeEnv = process.env.NODE_ENV || "development";
 
 export const cookies = {

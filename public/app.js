@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", fetchShortLinks);
+document.addEventListener("DOMContentLoaded", function () {
+  if (!localStorage.getItem("user_with_data")) {
+  } else {
+    fetchShortLinks();
+  }
+});
 
 let shortUrlsMemo = [];
 
@@ -13,7 +18,7 @@ document.getElementById("form-cutty").addEventListener("submit", async (e) => {
   btn.textContent = "Creando...";
 
   try {
-    const response = await fetch("http://localhost:1234/api/shortUrls", {
+    const response = await fetch("https://kut.fly.dev/api/shortUrls", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +36,7 @@ document.getElementById("form-cutty").addEventListener("submit", async (e) => {
       throw new Error(error.error);
     }
     const newResource = await response.json();
+    localStorage.setItem("user_with_data", "true");
 
     shortUrlsMemo.push(newResource.dataToRespond);
     showLinks(shortUrlsMemo);
@@ -55,7 +61,7 @@ document.getElementById("form-cutty").addEventListener("submit", async (e) => {
 async function fetchShortLinks() {
   showLoader();
   try {
-    const response = await fetch("http://localhost:1234/api/shortUrls", {
+    const response = await fetch("https://kut.fly.dev/api/shortUrls", {
       credentials: "include",
     });
 
@@ -68,13 +74,14 @@ async function fetchShortLinks() {
   } catch (error) {
     console.error(error);
   }
+  closeLoader();
 }
 
 async function copyText(id) {
   const text = document.getElementById(`url-${id}`).textContent;
 
   try {
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(text.trim());
     iziToast.success({
       title: "Copied successfully",
       color: "blue",

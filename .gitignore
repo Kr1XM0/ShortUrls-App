@@ -23,3 +23,9 @@ yarn-error.log*
 # Archivos de construcción y distribución
 dist/
 build/
+
+#fly.io
+.github/
+.dockerignore
+Dockerfile
+fly.toml
