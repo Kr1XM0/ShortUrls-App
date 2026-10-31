@@ -60,21 +60,29 @@ document.getElementById("form-cutty").addEventListener("submit", async (e) => {
 
 async function fetchShortLinks() {
   showLoader();
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+
   try {
     const response = await fetch("https://kut.fly.dev/api/shortUrls", {
       credentials: "include",
+      signal: controller.signal,
     });
 
-    if (!response.ok) return;
+    if (!response.ok) {
+      throw new Error(`No se pudieron cargar las URLs (${response.status})`);
+    }
+
     const data = await response.json();
 
     shortUrlsMemo = data;
     showLinks(data);
-    closeLoader();
   } catch (error) {
     console.error(error);
+  } finally {
+    clearTimeout(timeoutId);
+    closeLoader();
   }
-  closeLoader();
 }
 
 async function copyText(id) {
