@@ -1,80 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>URL Shortener</title>
-    <link href="./styles/style.css" rel="stylesheet">
-    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <!-- iziToast -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05070f">
+  <meta name="description" content="Kut turns long, messy URLs into short, shareable links. Fast, private and temporary by design.">
+  <title>Kut — Tiny links, big impact</title>
+
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- iziToast -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+
+  <link href="./styles/style.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Ambient background -->
+  <div class="bg-aurora" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="grid-overlay"></span>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Kut home">
+      <span class="brand-mark">
+        <svg class="icons" aria-hidden="true"><use xlink:href="#icon-links"></use></svg>
+      </span>
+      <span class="brand-name">kut<span class="brand-dot">.</span></span>
+    </a>
+
+    <span class="header-pill">
+      <span class="status-dot"></span>
+      Free · links auto-expire
+    </span>
+  </header>
+
   <main>
-    <div class="hero-container">
-      <h1>Tiny Links, Big impact!</h1>
-      <p>Welcome to your Linkhub, Shorten, Share. Repeat ;) </p>
-      <p>Short and temporary links: up to 10 links per user, valid for 14 days. Perfect for promotions, events or content that doesn't need to be permanent. Try now!</p>
-    </div>
-    <div class="form-container">
-      <h1>
-        Cutty a Link
-        <svg class="icons" >
-          <use xlink:href="#icon-homeLinks"></use>
-        </svg>
-      </h1>
-        <form id="form-cutty">
-          <div class="form-div">
-            <label for="url-input">
-              <svg class="icons" >
-                <use xlink:href="#icon-location"></use>
-              </svg>
-              Long Url
-            </label>
-            <input type="url" id="url-input" 
-              placeholder="Past a long URL here" required
-            >
-          </div>
-          <div class="form-div">
-            <label for="url-alias">
-              <svg class="icons" >
-                <use xlink:href="#icon-pencil"></use>
-              </svg>
-              Alias (optional)
-            </label>
-            
-            <input type="text" id="url-alias" 
-              placeholder="Alias"
-            >
-            <small> Must be at least 3 characters </small>
-          </div>
-          <button id="btn-submit" type="submit">
-              Shorten Link
-          </button>
-        </form>
+    <section class="hero">
+      <span class="eyebrow">
+        <svg class="icons" aria-hidden="true"><use xlink:href="#icon-sparkles"></use></svg>
+        Short links, zero friction
+      </span>
+
+      <h1>Tiny links,<br><span class="gradient-text">big impact.</span></h1>
+
+      <p class="lede">
+        Turn long, messy URLs into clean, shareable links in seconds.
+        Perfect for promotions, events or anything that doesn't need to live forever.
+      </p>
+
+      <ul class="feature-list">
+        <li>
+          <span class="feature-icon">
+            <svg class="icons" aria-hidden="true"><use xlink:href="#icon-zap"></use></svg>
+          </span>
+          Instant shortening
+        </li>
+        <li>
+          <span class="feature-icon">
+            <svg class="icons" aria-hidden="true"><use xlink:href="#icon-clock"></use></svg>
+          </span>
+          14-day auto expiry
+        </li>
+        <li>
+          <span class="feature-icon">
+            <svg class="icons" aria-hidden="true"><use xlink:href="#icon-shield"></use></svg>
+          </span>
+          Private by default
+        </li>
+      </ul>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>10</strong>
+          <span>links per user</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat">
+          <strong>14</strong>
+          <span>days of validity</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat">
+          <strong>∞</strong>
+          <span>times shared</span>
+        </div>
       </div>
+    </section>
+
+    <section class="form-container" aria-labelledby="form-title">
+      <div class="card-glow" aria-hidden="true"></div>
+
+      <div class="card-header">
+        <span class="card-icon">
+          <svg class="icons" aria-hidden="true"><use xlink:href="#icon-homeLinks"></use></svg>
+        </span>
+        <div>
+          <h2 id="form-title">Shorten a link</h2>
+          <p>Paste your URL and we'll do the rest.</p>
+        </div>
+      </div>
+
+      <form id="form-cutty">
+        <div class="form-div">
+          <label for="url-input">
+            <svg class="icons" aria-hidden="true"><use xlink:href="#icon-location"></use></svg>
+            Long URL
+          </label>
+          <div class="input-wrap">
+            <svg class="icons input-icon" aria-hidden="true"><use xlink:href="#icon-links"></use></svg>
+            <input
+              type="url"
+              id="url-input"
+              name="url"
+              placeholder="https://example.com/your/really/long/link"
+              autocomplete="url"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-div">
+          <label for="url-alias">
+            <svg class="icons" aria-hidden="true"><use xlink:href="#icon-pencil"></use></svg>
+            Custom alias <span class="optional">Optional</span>
+          </label>
+          <div class="input-wrap">
+            <span class="input-prefix" aria-hidden="true">kut/</span>
+            <input
+              type="text"
+              id="url-alias"
+              name="alias"
+              placeholder="my-awesome-link"
+              autocomplete="off"
+              spellcheck="false"
+            >
+          </div>
+          <small>Must be at least 3 characters long.</small>
+        </div>
+
+        <button id="btn-submit" type="submit">
+          <span>Shorten link</span>
+          <svg class="icons" aria-hidden="true"><use xlink:href="#icon-arrow-right"></use></svg>
+        </button>
+      </form>
+
+      <p class="form-footnote">
+        <svg class="icons" aria-hidden="true"><use xlink:href="#icon-lock"></use></svg>
+        No account needed. Your links are tied to your browser only.
+      </p>
+    </section>
   </main>
 
-    <div id="loader" class="loader" style="display: none;">
-      <svg class="spinner icons" >
-        <use xlink:href="#icon-loader"></use>
-      </svg>
+  <section id="show-results" aria-labelledby="results-title">
+    <div class="section-heading">
+      <div>
+        <h2 id="results-title">Recent links</h2>
+        <p>Your latest shortened links, ready to share.</p>
+      </div>
+      <span id="links-count" class="count-pill">0 links</span>
     </div>
-    <div id="show-results">
-      <h2>Recent Urls: </h2>
-      <ol id="url-container">
-      </ol>
+    <ol id="url-container"></ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>Built for sharing · Links expire automatically after 14 days.</p>
+  </footer>
+
+  <div id="loader" class="loader" style="display: none;" role="status" aria-live="polite">
+    <div class="loader-box">
+      <svg class="spinner icons" aria-hidden="true"><use xlink:href="#icon-loader"></use></svg>
+      <span>Loading your links…</span>
     </div>
-      
-    </body>
-    <script>
-      fetch('./assets/icons.svg')
-        .then(response => response.text())
-        .then(svg => {
-          document.body.insertAdjacentHTML('beforeend', svg);
+  </div>
+
+  <script>
+    fetch('./assets/icons.svg')
+      .then(response => response.text())
+      .then(svg => {
+        document.body.insertAdjacentHTML('beforeend', svg);
       });
-    </script>
-    <script type="module" src="app.js"></script>
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
 </html>
